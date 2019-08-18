@@ -1,10 +1,10 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/** {*/
+  /*margin: 0;*/
+  /*padding: 0;*/
+  /*box-sizing: border-box;*/
+/*}*/
 .cont {
-  max-width: 1550px;
+  width: 1550px;
   padding: 15px;
   margin: 0 auto;
 }
@@ -14,6 +14,9 @@
   background-color: #8b8329;
   color: #fff;
 }
+.img{
+  width: 50px;
+}
 .boots-cont {
   display: flex;
   align-items: center;
@@ -21,15 +24,26 @@
   padding: 10px;
   background-color: rgba(242, 249, 255, 0.3);
 }
-.user_name_list {
-  align-items: flex-start;
+.user_name_list{
+  display: flex;
+  justify-content: center;
+  max-width: 1560px;
+  margin: 0 auto;
 }
+.user_name_list__wrapper {
+  align-items: flex-start;
+  padding-top: 10px;
+  width: 100%;
+}
+
 .user_name_list__item {
   position: relative;
+  overflow: hidden;
   box-shadow: 0 0 4px 2px #cacaca;
   padding: 10px;
-  background-color: #fbfdff;
-  max-width: 500px;
+  background-color: rgb(251, 253, 255);
+  z-index: 1;
+  /*max-width: 500px;*/
 }
 .user_name_list__container {
   display: flex;
@@ -38,6 +52,7 @@
 .user_name_list__img {
   position: relative;
   width: 21%;
+  min-width: 75px;
   border-radius: 50%;
   box-shadow: 0 0 3px 1px #797878;
   margin-right: 15px;
@@ -50,6 +65,7 @@
   display: block;
   padding-top: 100%;
 }
+
 .user_name_list__img img {
   width: 100%;
   height: auto;
@@ -57,7 +73,7 @@
 .user_name_list__wrap {
   display: flex;
   margin-right: 10px;
-  font-size: 17px;
+  font-size: 15px;
 }
 .user_name_list__wrap p {
   margin-bottom: 0;
@@ -152,29 +168,33 @@
   border-top-color: transparent;
   border-left-color: transparent;
 }
+
+
+/*В том случае если диаграмма должна появляться по нажатию*/
 .main-container-progressbar {
   position: absolute;
-  z-index: 1;
   width: 100%;
   left: 50%;
   top: 100%;
   transform: translate(-50%, 0);
   box-shadow: 0 0 4px 2px #cacaca;
-  background-color: #fbfdff;
+  background-color: rgb(251, 253, 255);
 }
 .main-container-progressbar:after {
-  position: absolute;
-  top: -7px;
   content: "";
   display: block;
   width: 100%;
-  height: 12px;
-  background-color: #fbfdff;
+  height: 11px;
+  background-color: rgb(251, 253, 255);
+  position: absolute;
+  top: -6px;
 }
-@media screen and (max-width: 1500px) {
+
+
+@media screen and (max-width: 1160px) {
   .user_name_list {
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 0;
+    margin-right: 0;
   }
   .user_name_list .col-flex {
     width: calc(100%/2 - 10px*2);

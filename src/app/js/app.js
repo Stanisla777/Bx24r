@@ -43,20 +43,22 @@
  * 2 аргумент - это массив фильтра для запроса
  *
  */
-application.prototype.getProger = function(selector) {
-    BX24.callMethod(
-        'user.search', //Метод который выполняем(запрос)
-        {
-            UF_DEPARTMENT_NAME: 'WEBBERRY_REMASTERED'
-        },
-        function(result) {
-            //var $result = JSON.parse(result);
 
-            $.each(result.data(), function(key, value){
-                $(selector).append(getUserList(value)); //в функцию передаём полученное значение(сотрудника)
-            })
-        }
-    )
-};
 
-app = new application();
+// application.prototype.getProger = function(selector) {
+//     BX24.callMethod(
+//         'user.search', //Метод который выполняем(запрос)
+//         {
+//             UF_DEPARTMENT_NAME: 'WEBBERRY_REMASTERED'
+//         },
+//         function(result) {
+//             //var $result = JSON.parse(result);
+//
+//             $.each(result.data(), function(key, value){
+//                 $(selector).append(getUserList(value)); //в функцию передаём полученное значение(сотрудника)
+//             })
+//         }
+//     )
+// };
+//
+// app = new application();
