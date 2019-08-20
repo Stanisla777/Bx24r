@@ -16,14 +16,16 @@
   flex-direction: column;
   position: relative;
   box-shadow: 0 0 4px 2px #cacaca;
-  background-color: #fbfdff;
   max-width: 500px;
+  background-color: #eef2f4;
 }
 .user_name_list__container {
-  display: flex;
-  align-items: center;
   width: max-content;
   margin: 15px;
+}
+.user_name_list__description {
+  display: flex;
+  align-items: center;
 }
 .user_name_list__img {
   position: relative;
@@ -45,16 +47,15 @@
   width: 100%;
   height: auto;
 }
-.user_name_list__wrap {
-  display: flex;
+.user_name_list__information {
   margin-right: 10px;
   font-size: 17px;
 }
-.user_name_list__wrap p {
+.user_name_list__information p {
   margin-bottom: 0;
   padding: 0;
 }
-.user_name_list__wrap:not(:last-child) {
+.user_name_list__information:not(:last-child) {
   margin-bottom: 10px;
 }
 .user_name_list__label {
@@ -86,7 +87,7 @@
   flex-direction: column;
 }
 .wrapper-progressbar__progress-bars {
-  background-color: #c2c5c7;
+  background-color: #a2f95d;
   -webkit-animation-duration: 3s;
   animation-duration: 3s;
   -webkit-animation-fill-mode: both;
@@ -108,28 +109,20 @@
   }
 }
 .progressbar-count {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: absolute;
+  width: 60px;
   left: 50%;
-  margin-left: -26px;
-  width: 52px;
-  top: 50%;
-  margin-top: -26px;
-  height: 52px;
-  border: solid 1px #c7d7ec;
-  box-shadow: 0 0 2px 0 #7b7b7b;
-  border-radius: 50%;
-  /*border-radius: 2px;*/
-  background: #e9ecef;
+  margin-left: -30px;
+  /* margin-top: -26px; */
   font-weight: normal;
   cursor: auto;
-  /* padding: 3px; */
+  text-align: center;
+  top: 6%;
 }
 .progressbar-count p {
   margin: 0;
   padding: 0;
+  text-shadow: 0 1px 2px #615b5b;
 }
 /*.progressbar-count:before,
 .progressbar-count:after {
