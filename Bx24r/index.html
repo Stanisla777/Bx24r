@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reports</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/grid-same-column.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/templates.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script src="//api.bitrix24.com/api/v1/"></script>
+</head>
+<body>
+
+
+<span id="user_name"></span><br>
+<div class="user_name_list">
+    <div class="user_name_list__wrapper row-3-col-mar-10 mar-bottom">
+
+    </div>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+
+
+        BX24.init(function () {
+            app.saveFrameWidth();
+            app.displayCurrentUser('#user_name');
+            app.getProger($('.user_name_list__wrapper'));
+            app.getTimeCompletedTasks(936);
+        });
+    });
+
+
+</script>
+</body>
+</html>

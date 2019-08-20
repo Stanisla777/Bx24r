@@ -11,43 +11,27 @@ body{
   padding: 15px;
   margin: 0 auto;
 }
-.but{
-  display: block;
-  padding: 10px 15px;
-  background-color: #8b8329;
-  color: #fff;
-}
-
-
-
-
-.boots-cont{
-  display: flex;
-  align-items: center;
-  box-shadow: 0 0 4px 2px #cacaca;
-  padding: 10px;
-  background-color: rgba(242, 249, 255, 0.3);
-}
 .user_name_list{
   align-items: flex-start;
 
   &__item{
+    display: flex;
+    flex-direction: column;
     position: relative;
-    //display: flex;
-    //align-items: center;
     box-shadow: 0 0 4px 2px #cacaca;
-    padding: 10px;
     background-color: rgb(251, 253, 255);
-    //z-index: 1;
     max-width: 500px;
   }
   &__container{
     display: flex;
     align-items: center;
+    width: max-content;
+    margin: 15px;
   }
   &__img{
     position: relative;
-    width: 21%;
+    width: 10%;
+    min-width: 50px;
     &:before{
       content: "";
       display: block;
@@ -83,8 +67,6 @@ body{
 
 
   &__progress{
-    //margin-top: 40px;
-    //margin-bottom: 20px;
     .progress-bar{
       will-change: auto;
 
@@ -96,34 +78,48 @@ body{
 
 }
 
-.container-progressbar{
-  position: relative;
-  width: 80%;
+.progress-bars {
+  background-color: red;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
 
+  transition-property: width;
+  transition-duration: 0.6s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+.wrapper-progressbar{
+  &__progress{
+    display: flex;
+    flex-direction: column;
 
-  &__margin{
-    margin: 40px auto 25px;
   }
-
-  .progress-bar {
+  &__progress-bars{
+    background-color: #c2c5c7;
     -webkit-animation-duration: 3s;
     animation-duration: 3s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
-    animation-iteration-count:1;
+    animation-iteration-count: 1;
     -webkit-animation-name: zoomIn;
     animation-name: zoomIn;
-  }
 
-}
-.wrapper-progressbar{
-  background-color: #e9ecef;
-  border-radius: .25rem;
-  max-width: 100%;
-  &__margin{
-    margin: 7px 0 0;
+    transition-property: width;
+    transition-duration: 0.6s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    //will-change: transition;
+
   }
 }
+
+
+
 @keyframes zoomIn {
   from {
     width: 0;
@@ -133,6 +129,8 @@ body{
     width: 100%;
   }
 }
+
+
 
 
 
@@ -183,16 +181,6 @@ body{
 }*/
 
 
-.progressbar-count:before {
-  display: none;
-}
-
-
-.progressbar-count:after {
-  border-top-color: transparent;
-  border-left-color: transparent;
-  //margin: 2px auto -14px auto;
-}
 
 
 

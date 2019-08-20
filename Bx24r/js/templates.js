@@ -22,18 +22,6 @@ function getUserList(user_list) {
                           <p class="user_name_list__label">Имя:</p>\
                           <p class="user_name_list__value">'+user_list.LAST_NAME+' '+user_list.NAME+'</p>\
                         </div>\
-                        <div class="user_name_list__wrap">\
-                          <p class="user_name_list__label">Должность:</p>\
-                          <p class="user_name_list__value">'+user_list.WORK_POSITION+'</p>\
-                        </div>\
-                        <div class="user_name_list__wrap">\
-                          <p class="user_name_list__label">Телефон:</p>\
-                          <p class="user_name_list__value">'+user_list.PERSONAL_MOBILE+'</p>\
-                        </div>\
-                        <div class="user_name_list__wrap">\
-                          <p class="user_name_list__label">Почта:</p>\
-                          <p class="user_name_list__value">'+user_list.EMAIL+'</p>\
-                        </div>\
                         \
                     </div>\
                 </div>\

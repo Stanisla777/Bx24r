@@ -51,8 +51,8 @@
 }
 .user_name_list__img {
   position: relative;
-  width: 21%;
-  min-width: 75px;
+  width: 10%;
+  min-width: 50px;
   border-radius: 50%;
   box-shadow: 0 0 3px 1px #797878;
   margin-right: 15px;
