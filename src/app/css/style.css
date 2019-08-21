@@ -9,7 +9,7 @@
   margin: 0 auto;
 }
 .user_name_list {
-  align-items: flex-start;
+  /*align-items: flex-start;*/
 }
 .user_name_list__item {
   display: flex;

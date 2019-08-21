@@ -11,30 +11,22 @@
 
 
 function getUserList(user_list) {
-    return '<div class="col-flex user_name_list__item">\
-            \
-                <div class="user_name_list__container">\
-                    \
-                    <div style="background-image: url('+user_list.PERSONAL_PHOTO+')" class="user_name_list__img"></div> \
-                    <div class="user_name_list__description">\
-                    \
-                        <div class="user_name_list__wrap">\
-                          <p class="user_name_list__label">Имя:</p>\
-                          <p class="user_name_list__value">'+user_list.LAST_NAME+' '+user_list.NAME+'</p>\
-                        </div>\
-                        \
-                    </div>\
-                </div>\
-                <div class="container-progressbar container-progressbar__margin">\
-                    <div class="progressbar-count"></div>\
-                    <div class="wrapper-progressbar">\
-                        <div data-width="22" class="progress">\
-                            <div class="progress-bar" role="progressbar" data-width="100"></div>\
+    return '<div class="col-flex user_name_list__item wrapper-progressbar" >\
+                <div data-width="38" class="wrapper-progressbar__progress">\
+                    <div style="" class="wrapper-progressbar__progress-bars">\
+                        <div class="user_name_list__container">\
+                            <div class="progressbar-count">\
+                                <p></p>\
+                            </div>\
+                            <div class="user_name_list__description">\
+                                <div style="background-image: url(' + user_list.PERSONAL_PHOTO + ')" class="user_name_list__img"></div> \
+                                <div class="user_name_list__information">\
+                                    <p class="user_name_list__value">' + user_list.LAST_NAME + ' ' + user_list.NAME + '</p>\
+                                </div>\
+                            </div>\
                         </div>\
                     </div>\
                 </div>\
             </div>';
-
-
 }
 

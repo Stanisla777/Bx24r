@@ -48,38 +48,71 @@ application.prototype.saveFrameWidth = function(selector){
 }
 
 application.prototype.getTimeCompletedTasks = function(id_user){
+    const closed_date = curentTime();
+
     BX24.callMethod(
         'tasks.task.list',
         {
             filter: {
                 'RESPONSIBLE_ID': id_user,
                 'REAL_STATUS': 5,
-                '>=CLOSED_DATE': '2019-08-10T00:01:01'
+                '>=CLOSED_DATE': /*'2019-8-10T00:01:01+03:00'*/closed_date
             },
              select: ['ID', 'TITLE', 'STATUS', 'DURATION_PLAN', 'CLOSED_DATE','TIME_ESTIMATE']
         },
         function(res){
             console.log(res.data());
-            console.log(curentTime())
+            console.log(curentTime());
+            console.log(res);
+
+
         }
+
+
     );
 };
 
-function curentTime(){
-    Data = new Date();
-    Year = Data.getFullYear();
-    Month = Data.getMonth();
-    Day = Data.getDate();
-    return Data
-}
+// function curentTime(){
+//     const now = moment();
+//     const dayMonth = now.daysInMonth();
+//     const currentDate = now.format();
+//     const currentDay = now.format('DD',10);
+//     const currentMonth = now.format('MM');
+//
+//     if(currentDay<=10&&currentMonth){
+//         return ("привет")
+//     }
+//     else {
+//         return('пока')
+//     }
+// }
+
+    function curentTime() {
+        Data = new Date();
+        Year = Data.getFullYear();
+        Year=parseInt(Year);
+        Month = Data.getMonth();
+        Month = (parseInt(Month)+1);
+        Day = Data.getDate();
+        Day = parseInt(Day);
+        if(Day>=10&&Month){
+
+            return closed_date = Year + "-"+Month+"-10T00:01"
+        }
+        else if(Day<=9&&(Month)){
+            return closed_date = Year + "-"+(Month-1)+"-10T00:01"
+        }
+        return (closed_date = "Сейчас"+Year + "-"+(Month+1)+"-10T00:01")
+    }
+
 
 
 app = new application();
 
 function createProgressBar(targetItems){
     targetItems.each(function () {
-        const data_width = $(this).find('.wrapper-progressbar .progress').attr('data-width');
-        $(this).find('.wrapper-progressbar .progress').css('width',data_width+'%');
+        const data_width = $(this).find('.wrapper-progressbar__progress').attr('data-width');
+        $(this).find('.wrapper-progressbar__progress').css('width',data_width+'%');
         const teg_this = $(this);
 
         $({numberValue: 0}).animate({numberValue: data_width}, {
@@ -89,7 +122,7 @@ function createProgressBar(targetItems){
 
             step: function (val) {
 
-                $(teg_this).find(".progressbar-count").html(Math.ceil(val) + ' %'); // Блок, где необходимо сделать анимацию
+                $(teg_this).find(".progressbar-count p").text(Math.ceil(val) + ' %'); // Блок, где необходимо сделать анимацию
 
             }
 
