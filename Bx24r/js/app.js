@@ -17,7 +17,8 @@ application.prototype.displayCurrentUser = function (selector) {
  *
  */
 
-
+var masive_user = [];
+var massive_time_shift =[];
 application.prototype.getProger = function(selector) {
     BX24.callMethod(
         'user.search', //Метод который выполняем(запрос)
@@ -25,14 +26,15 @@ application.prototype.getProger = function(selector) {
             UF_DEPARTMENT_NAME: 'WEBBERRY_REMASTERED'
         },
         function(result) {
-            //var $result = JSON.parse(result);
-            $.each(result.data(), function(key, value){
-                $(selector).append(getUserList(value)); //в функцию передаём полученное значение(сотрудника)
-                app.getTimeCompletedTasks(value.ID);
-            });
-            createProgressBar($('.user_name_list__item'));
 
-            app.resizeFrame();
+            $.each(result.data(), function(key, value){
+
+                // $(selector).append(getUserList(value)); //в функцию передаём полученное значение(сотрудника)
+                if(value.ACTIVE){
+                    app.getTimeCompletedTasks(value,selector);
+                }
+
+            });
 
         }
 
@@ -40,30 +42,42 @@ application.prototype.getProger = function(selector) {
 };
 
 
-application.prototype.getTimeCompletedTasks = function(id_user){
-    const closed_date = curentTime();
+application.prototype.getTimeCompletedTasks = function(array_user,selector) {
+    // const closed_date = curentTime();
 
     BX24.callMethod(
         'tasks.task.list',
         {
             filter: {
-                'RESPONSIBLE_ID': id_user,
+                'RESPONSIBLE_ID': array_user.ID,
                 'REAL_STATUS': 5,
-                '>=CLOSED_DATE': /*'2019-8-10T00:01:01+03:00'*/closed_date
+                '>=CLOSED_DATE': Util.instance().currentTime()
             },
-             select: ['ID', 'TITLE', 'STATUS', 'DURATION_PLAN', 'CLOSED_DATE','TIME_ESTIMATE']
+            select: ['ID', 'TITLE', 'STATUS', 'DURATION_PLAN', 'CLOSED_DATE', 'TIME_ESTIMATE']
         },
-        function(res){
-            console.log(res.data());
-            // console.log(name_user);
-            // console.log(res);
+        function (res) {
+            let user_time = 0;
+            let user_time_2 = 0;
+            let user_time_total = 0;
+            $.each(res.data(), function (key, value) {
+                $.each(value, function (key_1, value_1) {
+                    value_1.timeEstimate = parseInt(value_1.timeEstimate);
 
+
+                    user_time+=value_1.timeEstimate;
+                    user_time_total = (user_time*100)/(120*60*60);
+              });
+            });
+
+            $(selector).append(getUserList(array_user,user_time_total)); //в функцию передаём полученное значение(сотрудника)
+
+            createProgressBar($('.user_name_list__item'));
 
         }
-
-
     );
 };
+
+
 
 // function curentTime(){
 //     const now = moment();
@@ -80,23 +94,7 @@ application.prototype.getTimeCompletedTasks = function(id_user){
 //     }
 // }
 
-    function curentTime() {
-        Data = new Date();
-        Year = Data.getFullYear();
-        Year=parseInt(Year);
-        Month = Data.getMonth();
-        Month = (parseInt(Month)+1);
-        Day = Data.getDate();
-        Day = parseInt(Day);
 
-
-        if(Day>10&&Month){
-            return closed_date = Year + "-"+Month+"-10T00:01"
-        }
-        else if(Day<=10&&Month){
-            return closed_date = Year + "-"+(Month-1)+"-10T00:01"
-        }
-    }
 
 
 

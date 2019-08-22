@@ -10,9 +10,9 @@
 
 
 
-function getUserList(user_list) {
-    return '<div class="col-flex user_name_list__item wrapper-progressbar" >\
-                <div data-width="38" class="wrapper-progressbar__progress">\
+function getUserList(user_list,user_task) {
+        return '<div class="col-flex user_name_list__item wrapper-progressbar" >\
+                <div data-width="'+user_task.toFixed(2)+'" class="wrapper-progressbar__progress">\
                     <div style="" class="wrapper-progressbar__progress-bars">\
                         <div class="user_name_list__container">\
                             <div class="progressbar-count">\
@@ -28,5 +28,7 @@ function getUserList(user_list) {
                     </div>\
                 </div>\
             </div>';
+
+
 }
 
