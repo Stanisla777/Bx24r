@@ -25,14 +25,15 @@
   background-color: rgba(242, 249, 255, 0.3);
 }
 .user_name_list {
-  /*align-items: flex-start;*/
+  width: 98%;
+  margin: 0 auto;
 }
 .user_name_list__item {
   display: flex;
   flex-direction: column;
   position: relative;
   box-shadow: 0 0 4px 2px #cacaca;
-  max-width: 500px;
+  /*max-width: 500px;*/
   background-color: #eef2f4;
 }
 .user_name_list__container {
