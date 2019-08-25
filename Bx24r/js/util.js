@@ -16,7 +16,9 @@ class Util {
         }
     }
 
-    static instance() {
-        return new Util();
-    }
+    // static instance() {
+    //     return new Util();
+    // }
 }
+
+let util = new Util();

@@ -51,11 +51,12 @@ application.prototype.getTimeCompletedTasks = function(array_user,selector) {
             filter: {
                 'RESPONSIBLE_ID': array_user.ID,
                 'REAL_STATUS': 5,
-                '>=CLOSED_DATE': Util.instance().currentTime()
+                '>=CLOSED_DATE': util.currentTime()
             },
             select: ['ID', 'TITLE', 'STATUS', 'DURATION_PLAN', 'CLOSED_DATE', 'TIME_ESTIMATE']
         },
         function (res) {
+            console.log(util.currentTime())
             let user_time = 0;
             let user_time_2 = 0;
             let user_time_total = 0;
