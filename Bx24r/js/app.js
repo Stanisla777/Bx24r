@@ -19,19 +19,20 @@ application.prototype.displayCurrentUser = function (selector) {
 
 var masive_user = [];
 var massive_time_shift =[];
-application.prototype.getProger = function(selector) {
+application.prototype.getProger = function(selector,selector_2) {
     BX24.callMethod(
         'user.search', //Метод который выполняем(запрос)
         {
             UF_DEPARTMENT_NAME: 'WEBBERRY_REMASTERED'
         },
         function(result) {
+            $(selector_2).append(GeneralInfo.instance().showGeneralInfo());
 
             $.each(result.data(), function(key, value){
 
                 // $(selector).append(getUserList(value)); //в функцию передаём полученное значение(сотрудника)
                 if(value.ACTIVE){
-                    app.getTimeCompletedTasks(value,selector);
+                    app.getTimeCompletedTasks(value,selector,selector_2);
                 }
 
             });
@@ -51,12 +52,11 @@ application.prototype.getTimeCompletedTasks = function(array_user,selector) {
             filter: {
                 'RESPONSIBLE_ID': array_user.ID,
                 'REAL_STATUS': 5,
-                '>=CLOSED_DATE': util.currentTime()
+                '>=CLOSED_DATE': Util.instance().currentTime()
             },
             select: ['ID', 'TITLE', 'STATUS', 'DURATION_PLAN', 'CLOSED_DATE', 'TIME_ESTIMATE']
         },
         function (res) {
-            console.log(util.currentTime())
             let user_time = 0;
             let user_time_2 = 0;
             let user_time_total = 0;
@@ -70,9 +70,15 @@ application.prototype.getTimeCompletedTasks = function(array_user,selector) {
               });
             });
 
-            $(selector).append(getUserList(array_user,user_time_total)); //в функцию передаём полученное значение(сотрудника)
+            //$(selector).append(getUserList(array_user,user_time_total)); //в функцию передаём полученное значение(сотрудника)
+            $(selector).append(
+                UserWorker.instance({
+                user: array_user,
+                time: user_time_total
+            }).showUserList());
+            // $(selector_2).append(getGeneralInfoList()); //в функцию передаём полученное значение(сотрудника)
 
-            createProgressBar($('.user_name_list__item'));
+            createProgressBar($('.company_employees_item'));
 
         }
     );
@@ -101,11 +107,22 @@ application.prototype.getTimeCompletedTasks = function(array_user,selector) {
 
     app = new application();
 
-function createProgressBar(targetItems){
+function createProgressBar(targetItems) {
     targetItems.each(function () {
-        const data_width = $(this).find('.wrapper-progressbar__progress').attr('data-width');
-        $(this).find('.wrapper-progressbar__progress').css('width',data_width+'%');
+
+
+        const data_width = $(this).find('.cart_progressbar__progress').attr('data-width');
+        if (data_width <= 50) {
+            $(this).find('.cart_progressbar__progress_bar').removeClass('cart_progressbar_color_1')
+            $(this).find('.cart_progressbar__progress_bar').addClass('cart_progressbar_color_2')
+        }
+        else {
+            $(this).find('.cart_progressbar__progress_bar').removeClass('cart_progressbar_color_2')
+            $(this).find('.cart_progressbar__progress_bar').addClass('cart_progressbar_color_1')
+        }
+        $(this).find('.cart_progressbar__progress').css('width', data_width + '%');
         const teg_this = $(this);
+
 
         $({numberValue: 0}).animate({numberValue: data_width}, {
 
@@ -119,8 +136,11 @@ function createProgressBar(targetItems){
             }
 
         });
+
     });
+
 }
+
 
 
 application.prototype.resizeFrame = function(){

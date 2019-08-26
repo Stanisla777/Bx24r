@@ -147,7 +147,7 @@ p {
 
 @font-face {
     font-family: 'IcoMoon-Free';
-    src: url('../font/IcoMoon-Free.ttf') format('truetype');
+    src: url('font/IcoMoon-Free.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
