@@ -58,19 +58,22 @@
     <!--</div>-->
 
     <div class="row-3-col-mar-10 mar-bottom general_information_employees" style="">
-        <div  class="col-flex general_information_item information_employees">
-            <div class="general_information_item__body">
-                <div  class="general_information_item__icon">
-                    <i class="fa fa-rub" aria-hidden="true"></i>
-                </div>
-                <div class="general_information_item__wrap_info">
-                    <p class="general_information_item__title">Database</p>
-                    <p class="general_information_item__count">Total: <span>785244</span></p>
-                </div>
+        <div class="pacman"><div></div><div></div><div></div><div></div><div></div></div>
 
 
-            </div>
-        </div>
+        <!--<div  class="col-flex general_information_item information_employees">-->
+            <!--<div class="general_information_item__body">-->
+                <!--<div  class="general_information_item__icon">-->
+                    <!--<i class="fa fa-rub" aria-hidden="true"></i>-->
+                <!--</div>-->
+                <!--<div class="general_information_item__wrap_info">-->
+                    <!--<p class="general_information_item__title">Database</p>-->
+                    <!--<p class="general_information_item__count">Total: <span>785244</span></p>-->
+                <!--</div>-->
+
+
+            <!--</div>-->
+        <!--</div>-->
 
     </div>
     
@@ -273,10 +276,22 @@
 
 
 <script>
+
+
+
+
+
     $(document).ready(function () {
 
 
         $(function () {
+
+            function loader (){
+                $('.pacman').fadeOut(600);
+            }
+            setTimeout(loader,3000)
+
+
 
 
             $('.company_employees_item').each(function () {
@@ -327,19 +342,7 @@
         });
 
 
-        BX24.init(function () {
-            app.displayCurrentUser($('#user_name'));
-        });
-        // BX24.init(function() {
-        //     app.getProger('.user_name_list');
-        // });
 
-        $('.but').on('click',function () {
-            $(this).siblings('.user_name_list').empty();
-            BX24.init(function() {
-                app.getProger($('.user_name_list'));
-            });
-        })
     })
 
 
